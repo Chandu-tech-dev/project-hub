@@ -1,6 +1,7 @@
 // PROJECT DATA
 const projects = [
     {
+        id: "dress-search",
         title: "AI-Powered Dress Search",
         cat: "ai",
         status: "Open",
@@ -9,6 +10,42 @@ const projects = [
         description: "Intelligent visual search engine helping users find matching dresses from photos. Features real-time pattern recognition and price comparison.",
         image: "projects/ai-powered-dress-search/image.png",
         url: "projects/ai-powered-dress-search/index.html"
+    },
+    {
+        id: "smart-pdf-lab",
+        title: "Smart PDF Lab",
+        cat: "Web Tool",
+        status: "Live",
+        tags: ["PDF", "Utilities", "Text-to-Speech", "Web"],
+        color: "#E74C3C",
+        description: "A comprehensive suite of PDF tools including text-to-speech, page selection, speech-to-text conversion, and more.",
+        image: "projects/smart-pdf-lab/pdf.png",
+        url: "project-details.html?id=smart-pdf-lab",
+        demoUrl: "https://chandu-tech-dev.github.io/Smart-PDF-Lab/"
+    },
+    {
+        id: "bca-guidance",
+        title: "BCA Guidance",
+        cat: "Education",
+        status: "Live",
+        tags: ["BCA", "Notes", "Guidance", "Education"],
+        color: "#3498DB",
+        description: "A comprehensive platform providing notes, guidance, and resources for BCA students to help master computer applications.",
+        image: "projects/bca-guidance/bca.png",
+        url: "project-details.html?id=bca-guidance",
+        demoUrl: "https://chandu-tech-dev.github.io/BCA-GUIDANCE-/"
+    },
+    {
+        id: "virtual-try-on",
+        title: "Virtual Try On Clothing",
+        cat: "AI/AR",
+        status: "Open",
+        tags: ["AR", "Computer Vision", "React", "AI"],
+        color: "#9B59B6",
+        description: "Experience the future of shopping with our Virtual Try-On technology. Upload your photo and instantly see how different outfits look on you.",
+        image: "projects/virtual-try-on/tryon.png",
+        url: "project-details.html?id=virtual-try-on",
+        whatsapp: "918073136470"
     }
 ];
 
@@ -85,8 +122,8 @@ function initDetailsPage() {
     const project = projects.find(p => p.id === projectId);
 
     if (project) {
-        // Placeholder for user's WhatsApp number
-        const whatsappNumber = "9071249859";
+        // Use project-specific WhatsApp number if available, otherwise default
+        const whatsappNumber = project.whatsapp || "9071249859";
         const message = encodeURIComponent(`Hi, I'm interested in joining the team for "${project.title}".`);
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
@@ -122,10 +159,17 @@ function initDetailsPage() {
                 </p>
             </div>
 
-            <a href="${whatsappUrl}" target="_blank" class="whatsapp-btn">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="margin-right:8px;"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.654-.698c1.02.592 1.974.885 3.091.885h.001c3.181 0 5.768-2.586 5.768-5.766.001-3.181-2.587-5.767-5.767-5.767zm6.524 9.807c-2.435 2.884-7.013 3.654-10.793 1.343l-1.077 1.185-1.009-1.096 1.05-1.157c-1.465-3.694.047-7.904 3.75-9.37 3.695-1.465 7.905.047 9.371 3.75.461 1.166.49 2.378.136 3.497 2.226-1.571 2.059-1.789 2.012-1.731-.19-.24-.606-.285-.843-.095-.24.19-.285.606-.095.843.058.071 1.009-1.123-2.502 2.831zm-6.524-11.979c-4.407 0-7.993 3.586-7.993 7.992 0 1.487.412 2.894 1.139 4.103l-1.666 6.082 6.255-1.644c1.192.658 2.559 1.003 3.961 1.003 4.407 0 7.994-3.586 7.994-7.992s-3.587-7.992-7.994-7.992z"/></svg>
-                Request to join 
-            </a>
+            <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px;">
+                ${project.demoUrl ? `
+                <a href="${project.demoUrl}" target="_blank" class="btn-primary" style="display:inline-flex; align-items:center; text-decoration:none;">
+                    Visit Project ↗
+                </a>` : ''}
+
+                <a href="${whatsappUrl}" target="_blank" class="whatsapp-btn" style="margin-top: 0;">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="margin-right:8px;"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.654-.698c1.02.592 1.974.885 3.091.885h.001c3.181 0 5.768-2.586 5.768-5.766.001-3.181-2.587-5.767-5.767-5.767zm6.524 9.807c-2.435 2.884-7.013 3.654-10.793 1.343l-1.077 1.185-1.009-1.096 1.05-1.157c-1.465-3.694.047-7.904 3.75-9.37 3.695-1.465 7.905.047 9.371 3.75.461 1.166.49 2.378.136 3.497 2.226-1.571 2.059-1.789 2.012-1.731-.19-.24-.606-.285-.843-.095-.24.19-.285.606-.095.843.058.071 1.009-1.123-2.502 2.831zm-6.524-11.979c-4.407 0-7.993 3.586-7.993 7.992 0 1.487.412 2.894 1.139 4.103l-1.666 6.082 6.255-1.644c1.192.658 2.559 1.003 3.961 1.003 4.407 0 7.994-3.586 7.994-7.992s-3.587-7.992-7.994-7.992z"/></svg>
+                    Request to join 
+                </a>
+            </div>
         `;
     } else {
         detailsContainer.innerHTML = '<p>Project not found.</p> <a href="index.html" class="back-link">Back to Home</a>';
